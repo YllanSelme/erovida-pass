@@ -12,6 +12,8 @@
 		745AA1C12B3DC814003B0FFD /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C02B3DC814003B0FFD /* RoundedCorner.swift */; };
 		745AA1C32B3DC86D003B0FFD /* RoundedCornerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C22B3DC86D003B0FFD /* RoundedCornerStyle.swift */; };
 		745AA1C52B3DD64A003B0FFD /* IdentifiantsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C42B3DD64A003B0FFD /* IdentifiantsRowView.swift */; };
+		745AA1C72B3E1D40003B0FFD /* IdentifantFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C62B3E1D40003B0FFD /* IdentifantFieldStyle.swift */; };
+		745AA1C92B3E21C5003B0FFD /* FormatDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C82B3E21C5003B0FFD /* FormatDate.swift */; };
 		74C3B7862B3C7F2700404C27 /* erovidaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C3B7852B3C7F2700404C27 /* erovidaApp.swift */; };
 		74C3B7882B3C7F2700404C27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C3B7872B3C7F2700404C27 /* ContentView.swift */; };
 		74C3B78A2B3C7F2C00404C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C3B7892B3C7F2C00404C27 /* Assets.xcassets */; };
@@ -55,6 +57,8 @@
 		745AA1C02B3DC814003B0FFD /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		745AA1C22B3DC86D003B0FFD /* RoundedCornerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerStyle.swift; sourceTree = "<group>"; };
 		745AA1C42B3DD64A003B0FFD /* IdentifiantsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiantsRowView.swift; sourceTree = "<group>"; };
+		745AA1C62B3E1D40003B0FFD /* IdentifantFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifantFieldStyle.swift; sourceTree = "<group>"; };
+		745AA1C82B3E21C5003B0FFD /* FormatDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDate.swift; sourceTree = "<group>"; };
 		74C3B7822B3C7F2700404C27 /* erovida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = erovida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C3B7852B3C7F2700404C27 /* erovidaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = erovidaApp.swift; sourceTree = "<group>"; };
 		74C3B7872B3C7F2700404C27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				74C3B7BA2B3C8CB600404C27 /* LoginTextField.swift */,
 				74C3B7C12B3C961F00404C27 /* CodeStyle.swift */,
 				745AA1C22B3DC86D003B0FFD /* RoundedCornerStyle.swift */,
+				745AA1C62B3E1D40003B0FFD /* IdentifantFieldStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				74C3B7BD2B3C91CE00404C27 /* UpdateError.swift */,
+				745AA1C82B3E21C5003B0FFD /* FormatDate.swift */,
 			);
 			path = Funcs;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 			files = (
 				745AA1C32B3DC86D003B0FFD /* RoundedCornerStyle.swift in Sources */,
 				74C3B7C02B3C933F00404C27 /* SignInView.swift in Sources */,
+				745AA1C72B3E1D40003B0FFD /* IdentifantFieldStyle.swift in Sources */,
 				745AA1BF2B3D85B0003B0FFD /* NewIdentifantView.swift in Sources */,
 				74C3B7C62B3CB8E700404C27 /* SelectItemView.swift in Sources */,
 				74C3B7C42B3CB41300404C27 /* PasswordView.swift in Sources */,
@@ -362,6 +369,7 @@
 				74C3B7BE2B3C91CE00404C27 /* UpdateError.swift in Sources */,
 				74C3B7B92B3C8ADB00404C27 /* NewAccountView.swift in Sources */,
 				74C3B7C22B3C961F00404C27 /* CodeStyle.swift in Sources */,
+				745AA1C92B3E21C5003B0FFD /* FormatDate.swift in Sources */,
 				745AA1C12B3DC814003B0FFD /* RoundedCorner.swift in Sources */,
 				74C3B7B42B3C84B400404C27 /* Color.swift in Sources */,
 				74C3B7882B3C7F2700404C27 /* ContentView.swift in Sources */,

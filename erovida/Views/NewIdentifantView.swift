@@ -80,18 +80,18 @@ struct NewIdentifantView: View {
                         
                         ZStack(alignment: .leading){
                             Rectangle()
-                                .frame(width: 350, height: 100)
+                                .frame(width: 350, height: 120)
                                 .background(Color(hex: 0x090D11))
                                 .roundedCorner(20, corners: [.bottomLeft, .bottomRight])
                             
-                            VStack(alignment: .leading){
+                            VStack(alignment: .leading, spacing: 0){
                                 Text("Titre")
                                     .foregroundColor(.white)
                                     .font(.system(size:20))
-                                TextField("Sans titre", text: $title)
+                                IdentifiantTitleView(text: $title, placeholder: "Sans titre", placeholderColor: Color(.gray))
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
                                     .frame(maxWidth: 230)
-                                    .font(.system(size:35))
-                                    .foregroundColor(.white)
                             }
                             .padding()
                         }
@@ -152,16 +152,16 @@ struct NewIdentifantView: View {
                                 .frame(width: 50, height: 50)
                                 .padding(10)
                             
-                            VStack(alignment: .leading){
+                            VStack(alignment: .leading, spacing: 10){
                                 Text("Date d'expiration (optionel)")
                                     .foregroundColor(.white)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                     .frame(maxWidth: 230)
-                                Text("Ajoutez une date")
-                                    .frame(maxWidth: 230)
-                                    .font(.system(size:25))
-                                    .foregroundColor(.white)
+                                Text("Ajoutez une date.")
+                                    .font(.system(size: 23, weight: .medium))
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal, 8)
                             }
                         }
                         .onTapGesture {
@@ -175,17 +175,12 @@ struct NewIdentifantView: View {
                             }
                             .presentationDetents([.medium])
                         }
-                        Text("\(formattedDate)")
-                            .foregroundColor(.white)
                     }
+                    
+                    Text("\(formatSelectedDate(selectedDate))")
+                        .foregroundColor(.white)
                 }
             }
-        }
-        var formattedDate: String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .none
-            return dateFormatter.string(from: selectedDate)
         }
     }
 }

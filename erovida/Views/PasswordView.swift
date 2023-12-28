@@ -19,7 +19,7 @@ struct PasswordView: View {
                             Spacer()
                             Button {
                                 selectedTab = 1
-                                text = "fesfe"
+                                text = "ejisf"
                             } label: {
                                 Label("", systemImage: "list.dash")
                                     .foregroundColor(selectedTab == 1 ? .blue : .white)
