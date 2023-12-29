@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewIdentifantView: View {
+    @State private var selectChest : Bool = false
     @State private var selectedDate = Date()
     @State private var dateSheet: Bool = false
     @State private var title: String = ""
@@ -49,7 +50,7 @@ struct NewIdentifantView: View {
                 
             ScrollView{
                     VStack (spacing: 2){
-                        ZStack(alignment: .leading){
+                        ZStack {
                             Rectangle()
                                 .frame(width: 350, height: 100)
                                 .background(Color(hex: 0x090D11))
@@ -73,9 +74,16 @@ struct NewIdentifantView: View {
                                 
                                 Image(systemName: "chevron.down")
                                     .foregroundColor(.white)
-                                    .padding(25)
+                                    .padding(.leading, 50)
                             }
                             .padding(5)
+                            
+                        }
+                        .onTapGesture {
+                            self.selectChest.toggle()
+                        }
+                        .sheet(isPresented: $selectChest) {
+                            Text("ijok")
                         }
                         
                         

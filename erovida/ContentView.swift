@@ -35,24 +35,11 @@ struct ContentView: View {
     @State private var selectedDate = Date()
 
     var body: some View {
-        VStack {
-            DatePicker("Sélectionnez une date", selection: $selectedDate, in: ...Date(), displayedComponents: .date)
-                .datePickerStyle(WheelDatePickerStyle())
-                .labelsHidden()
-                .padding()
-            
-            Text("Date sélectionnée : \(formattedDate)")
-                .padding()
-            
-            Spacer()
+        HStack {
+            Text("hjiesgkse")
+            Image(systemName: "person")
         }
-    }
-
-    private var formattedDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: selectedDate)
+        .background(.green)
     }
 }
 
