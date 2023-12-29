@@ -19,34 +19,35 @@ struct NewIdentifantView: View {
         ZStack {
             Color(hex: 0x001D38)
                 .edgesIgnoringSafeArea(.all)
-            ScrollView{
-                VStack (spacing: 15){
-                    HStack{
-                        Button {
-                            print("exit")
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.system(size:25))
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .background(Color(hex: 0x4485C4))
-                                .cornerRadius(50)
-                        }
-                        Spacer()
-                        Button {
-                            print("create")
-                        } label: {
-                            Text("Créer")
-                                .font(.system(size:25))
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .background(Color(hex: 0x4485C4))
-                                .cornerRadius(50)
-                        }
+            VStack (spacing: 15){
+                HStack{
+                    Button {
+                        print("exit")
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size:25))
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(Color(hex: 0x4485C4))
+                            .cornerRadius(50)
                     }
-                    .padding()
-                    .padding(.horizontal, 25)
-                    
+                    Spacer()
+                    Button {
+                        print("create")
+                    } label: {
+                        Text("Créer")
+                            .font(.system(size:25))
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .padding(.horizontal, 15)
+                            .background(Color(hex: 0x4485C4))
+                            .cornerRadius(50)
+                    }
+                }
+                .padding(5)
+                .padding(.horizontal, 25)
+                
+            ScrollView{
                     VStack (spacing: 2){
                         ZStack(alignment: .leading){
                             Rectangle()
