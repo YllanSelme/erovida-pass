@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct CheckKey: View {
-    @Binding var isKeySavedByUserBoolPerma: Bool
-    @Binding var checkKey: Bool
     @State private var pinValues: [String] = Array(repeating: "", count: 16)
+    @State private var alertText: String = "error"
     @State private var showingConfirmation: Bool = false
+    @State private var showingAlert: Bool = false
     var body: some View {
         ZStack {
             Color(hex: 0x001D38)
@@ -16,31 +16,26 @@ struct CheckKey: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 PinFieldView(pinValues: $pinValues)
-                Button("J'ai oublié ma clé") {
-                    showingConfirmation = true
+                Button("Vérifier") {
+                    let key64 = pinValues.joined(separator: "")
+                    checkKey(hashedKey: key64) { success in
+                        if success {
+                            alertText = "Votre clé est valide"
+                            showingAlert = true
+                        } else {
+                            alertText = "Votre clé est invalide"
+                            showingAlert = true
+                        }
+                    }
+                }
+                .alert(alertText, isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
                 }
                 .buttonStyle(LoginButtonStyle())
                 .foregroundColor(.white)
                 .frame(width: 340, height: 60)
                 .background(Color(hex: 0x4485C4))
                 .cornerRadius(50)
-                .confirmationDialog("", isPresented: $showingConfirmation) {
-                    Button("Générer une nouvelle clé"){
-                        let keyChain = AESAlgo.createPinString()
-                        saveStringToKeychain(str: keyChain, keyIdentifier: "pin")
-                        isKeySavedByUserBoolPerma = false
-                        saveStringToKeychain(str: "no", keyIdentifier: "isKeySavedByUser")
-                        checkKey = false
-                    }
-                    .foregroundColor(.green)
-                    Button("Annuler", role: .cancel){
-                    }
-                    .foregroundColor(.red)
-                } message: {
-                    VStack{
-                        Text("Si vous cliquez sur le bouton ci-dessous, votre clé précedente sera supprimée et vous ne pourrez jamais la récuperer")
-                    }
-                }
             }
         }
     }
@@ -48,6 +43,6 @@ struct CheckKey: View {
 
 struct CheckKey_Previews: PreviewProvider {
     static var previews: some View {
-        CheckKey(isKeySavedByUserBoolPerma : .constant(false), checkKey: .constant(false))
+        CheckKey()
     }
 }

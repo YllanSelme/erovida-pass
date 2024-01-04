@@ -38,7 +38,7 @@ class AESAlgo {
     static func createPinString() -> String {
         var keyString = ""
 
-        for _ in 1...2 {
+        for _ in 1...4 {
             let randomNumber = String(format: "%04d", Int.random(in: 0...9999))
             keyString.append(randomNumber)
         }

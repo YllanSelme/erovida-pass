@@ -3,6 +3,7 @@ import SwiftUI
 struct PersonView: View {
     @Binding var isKeySavedByUserBoolPerma: Bool
     @Binding var isKeySaved: Bool
+    @State private var checkKeySheet: Bool = false
     @State private var selectKey: Bool = false
     @State private var checkKey: Bool = false
 
@@ -11,47 +12,18 @@ struct PersonView: View {
             Color(hex: 0x001D38)
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                
-                List{
-                    Section(header: Text("Clé de sauvegarde")
-                        .foregroundColor(.gray)) {
-                        HStack{
-                            Text("Enregistrer ma clé")
-                                .foregroundColor(isKeySavedByUserBoolPerma ? .gray : .black)
-                            Spacer()
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            selectKey = true
-                        }
-                        .sheet(isPresented: $selectKey) {
-                            SaveKeyView(isKeySavedByUserBoolPerma: $isKeySavedByUserBoolPerma, selectKey: $selectKey)
-                        }
-                        
-                        
-                        HStack{
-                            Text("Vérifier ou générer une nouvelle clé")
-                                .foregroundColor(isKeySavedByUserBoolPerma ? .black : .gray)
-                            Spacer()
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            checkKey = true
-                        }
-                        .sheet(isPresented: $checkKey) {
-                            ZStack {
-                                Color(hex: 0x001D38)
-                                    .edgesIgnoringSafeArea(.all)
-                                VStack {
-                                    CheckKey(isKeySavedByUserBoolPerma : $isKeySavedByUserBoolPerma, checkKey: $checkKey)
-                                }
-                            }
-                        }
-                    }
+                Button("Vérifier ma clé") {
+                    checkKeySheet = true
                 }
-                .background(Color(hex: 0x001D38))
-                .scrollContentBackground(.hidden)
-
+                .buttonStyle(LoginButtonStyle())
+                .foregroundColor(.black)
+                .frame(width: 340, height: 60)
+                .background(Color(hex: 0x4485C4))
+                .cornerRadius(50)
+                .sheet(isPresented: $checkKeySheet) {
+                    CheckKey()
+                }
+                
                 Button("Se deconnecter") {
                     deleteKey(keyIdentifier: "isKeySavedByUser")
                     deleteKey(keyIdentifier: "pin")

@@ -1,15 +1,7 @@
-//
-//  SaveKeyView.swift
-//  erovida
-//
-//  Created by nosh#1234 on 04/01/2024.
-//
-
 import SwiftUI
 
 struct SaveKeyView: View {
-    @Binding var isKeySavedByUserBoolPerma: Bool
-    @Binding var selectKey: Bool
+    @Binding var isKeySaved: Bool
     @State private var pin: String = ""
     
     var body: some View {
@@ -29,15 +21,16 @@ struct SaveKeyView: View {
                 }
                 .padding()
                 
-                Text(pin)
-                    .font(.system(size:30, weight: .bold))
+                Text(insertNewline(pin: pin, at: 8))
+                    .font(.system(size: 30, weight: .bold))
                     .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(nil)
                 
                 Button("J'ai noté la clé à l'abris des regards")
                 {
-                    isKeySavedByUserBoolPerma = true
                     saveStringToKeychain(str: "yes", keyIdentifier: "isKeySavedByUser")
-                    selectKey = false
+                    isKeySaved = true
                 }
                 .buttonStyle(LoginButtonStyle())
                 .padding(.horizontal, 50)
@@ -52,11 +45,12 @@ struct SaveKeyView: View {
                 }
             }
         }
+        
     }
 }
 
 struct SaveKeyView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveKeyView(isKeySavedByUserBoolPerma: .constant(false), selectKey: .constant(false))
+        SaveKeyView(isKeySaved : .constant(false))
     }
 }

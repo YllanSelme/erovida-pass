@@ -5,6 +5,7 @@ import Security
 
 struct NewAccountView: View {
     @Binding var isKeySaved: Bool
+    @State private var saveKeySheet: Bool = false
     @State var name = ""
     @State var lastName = ""
     @State private var isEditingName = false
@@ -68,20 +69,18 @@ struct NewAccountView: View {
                                 
                                 let tagBase64_Last = stringFormat(text: sealedBoxLastName.tag.base64EncodedString())
                                 
-                                let urlString = "http://192.168.1.37:5000/create_account?hashedKey=\(keyHashed)&nameCipher=\(stringFormat(text: sealedBoxFirstName.ciphertext.base64EncodedString()))&nameNonce=\(stringFormat(text: sealedBoxFirstName.nonce.withUnsafeBytes {Data(Array($0))}.base64EncodedString()))&nameTag=\(tagBase64)&lastNameCipher=\(stringFormat(text: sealedBoxLastName.ciphertext.base64EncodedString()))&lastNameNonce=\(stringFormat(text: sealedBoxLastName.nonce.withUnsafeBytes { Data(Array($0)) }.base64EncodedString()))&lastNameTag=\(tagBase64_Last)"
-
                                 createAccount(hashedKey: keyHashed, nameCipher: stringFormat(text: sealedBoxFirstName.ciphertext.base64EncodedString()), nameNonce: stringFormat(text: sealedBoxFirstName.nonce.withUnsafeBytes {Data(Array($0))}.base64EncodedString()), nameTag: tagBase64, lastNameCipher: stringFormat(text: sealedBoxLastName.ciphertext.base64EncodedString()), lastNameNonce: stringFormat(text: sealedBoxLastName.nonce.withUnsafeBytes { Data(Array($0)) }.base64EncodedString()), lastNameTag: tagBase64_Last)
                             }
-                            
-                            isKeySaved = true
-                            
-                            
+                            saveKeySheet = true
                         }
                         .buttonStyle(LoginButtonStyle())
                         .foregroundColor(.black)
                         .frame(width: 340, height: 60)
                         .background(Color(hex: 0x4485C4))
                         .cornerRadius(50)
+                        .sheet(isPresented: $saveKeySheet) {
+                            SaveKeyView(isKeySaved: $isKeySaved)
+                        }
                     }.padding()
                 }.padding()
                 
