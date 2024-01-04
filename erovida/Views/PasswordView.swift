@@ -63,23 +63,6 @@ struct PasswordView: View {
                         }
                     }
 //                    .sheet(isPresented: $showingSheet) {
-//                        Text(pin)
-//                            .foregroundColor(.black)
-//
-//                        Button("Send pin") {
-//                            pin = retrievePinFromKeychain(keyIdentifier: "pin") ?? "oij"
-//
-//                        }
-//
-//                        Button("Se deconnecter") {
-//                            deleteKey(keyIdentifier: "key")
-//                            isKeySaved = false
-//                        }
-//                        .buttonStyle(LoginButtonStyle())
-//                        .foregroundColor(.black)
-//                        .frame(width: 340, height: 60)
-//                        .background(Color(hex: 0x4485C4))
-//                        .cornerRadius(50)
 ////                        ZStack{
 ////                            Color(hex: 0x001D38)
 ////                                .edgesIgnoringSafeArea(.all)
