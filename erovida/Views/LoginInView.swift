@@ -17,7 +17,6 @@ struct LoginInView: View {
                     .font(.system(size:30, weight: .bold))
                     .foregroundColor(.white)
                     .padding()
-                    .multilineTextAlignment(.center)
                 
                 VStack(spacing: 16) {
                     Button("Créer un nouveau compte") {
@@ -36,6 +35,8 @@ struct LoginInView: View {
                         loginSheet.toggle()
                     }
                     .buttonStyle(LoginButtonStyle())
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 15)
                     .foregroundColor(Color(hex: 0x4485C4))
                     .sheet(isPresented: $loginSheet) {
                         SignInView(isKeySaved: $isKeySaved)

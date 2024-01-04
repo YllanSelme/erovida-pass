@@ -13,6 +13,10 @@
 		74384D072B44790C00BEE81A /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D062B44790C00BEE81A /* CreateAccount.swift */; };
 		74384D092B44819600BEE81A /* stringFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D082B44819600BEE81A /* stringFormat.swift */; };
 		74384D0B2B46C0EF00BEE81A /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D0A2B46C0EF00BEE81A /* PersonView.swift */; };
+		74384D0D2B46CF6700BEE81A /* SaveKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D0C2B46CF6700BEE81A /* SaveKeyView.swift */; };
+		74384D0F2B46D27300BEE81A /* CheckKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D0E2B46D27300BEE81A /* CheckKey.swift */; };
+		74384D112B46D7D300BEE81A /* PinFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D102B46D7D300BEE81A /* PinFieldsView.swift */; };
+		74384D132B470A4600BEE81A /* sandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D122B470A4600BEE81A /* sandbox.swift */; };
 		745AA1BD2B3D856E003B0FFD /* SelectedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1BC2B3D856E003B0FFD /* SelectedItemModel.swift */; };
 		745AA1BF2B3D85B0003B0FFD /* NewIdentifantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1BE2B3D85B0003B0FFD /* NewIdentifantView.swift */; };
 		745AA1C12B3DC814003B0FFD /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C02B3DC814003B0FFD /* RoundedCorner.swift */; };
@@ -67,6 +71,10 @@
 		74384D062B44790C00BEE81A /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		74384D082B44819600BEE81A /* stringFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringFormat.swift; sourceTree = "<group>"; };
 		74384D0A2B46C0EF00BEE81A /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
+		74384D0C2B46CF6700BEE81A /* SaveKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveKeyView.swift; sourceTree = "<group>"; };
+		74384D0E2B46D27300BEE81A /* CheckKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckKey.swift; sourceTree = "<group>"; };
+		74384D102B46D7D300BEE81A /* PinFieldsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinFieldsView.swift; sourceTree = "<group>"; };
+		74384D122B470A4600BEE81A /* sandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sandbox.swift; sourceTree = "<group>"; };
 		745AA1BC2B3D856E003B0FFD /* SelectedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemModel.swift; sourceTree = "<group>"; };
 		745AA1BE2B3D85B0003B0FFD /* NewIdentifantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIdentifantView.swift; sourceTree = "<group>"; };
 		745AA1C02B3DC814003B0FFD /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 				74C3B7872B3C7F2700404C27 /* ContentView.swift */,
 				74C3B7892B3C7F2C00404C27 /* Assets.xcassets */,
 				74C3B78B2B3C7F2C00404C27 /* Preview Content */,
+				74384D122B470A4600BEE81A /* sandbox.swift */,
 			);
 			path = erovida;
 			sourceTree = "<group>";
@@ -229,6 +238,9 @@
 				745AA1CE2B40317A003B0FFD /* NewNoteView.swift */,
 				74B35C4B2B407E8900AB0D7B /* NewPasswordView.swift */,
 				74384D0A2B46C0EF00BEE81A /* PersonView.swift */,
+				74384D0C2B46CF6700BEE81A /* SaveKeyView.swift */,
+				74384D0E2B46D27300BEE81A /* CheckKey.swift */,
+				74384D102B46D7D300BEE81A /* PinFieldsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -416,7 +428,9 @@
 				74C3B7C02B3C933F00404C27 /* SignInView.swift in Sources */,
 				745AA1C72B3E1D40003B0FFD /* IdentifantFieldStyle.swift in Sources */,
 				745AA1CD2B402FB6003B0FFD /* NewCardView.swift in Sources */,
+				74384D0F2B46D27300BEE81A /* CheckKey.swift in Sources */,
 				745AA1BF2B3D85B0003B0FFD /* NewIdentifantView.swift in Sources */,
+				74384D112B46D7D300BEE81A /* PinFieldsView.swift in Sources */,
 				74C3B7C62B3CB8E700404C27 /* SelectItemView.swift in Sources */,
 				74C3B7C42B3CB41300404C27 /* PasswordView.swift in Sources */,
 				74C3B7B12B3C7F6A00404C27 /* LoginInView.swift in Sources */,
@@ -430,11 +444,13 @@
 				745AA1C92B3E21C5003B0FFD /* FormatDate.swift in Sources */,
 				745AA1CF2B40317A003B0FFD /* NewNoteView.swift in Sources */,
 				74384D022B445BD500BEE81A /* AESAlgo.swift in Sources */,
+				74384D0D2B46CF6700BEE81A /* SaveKeyView.swift in Sources */,
 				745AA1C12B3DC814003B0FFD /* RoundedCorner.swift in Sources */,
 				74C3B7B42B3C84B400404C27 /* Color.swift in Sources */,
 				74C3B7882B3C7F2700404C27 /* ContentView.swift in Sources */,
 				745AA1BD2B3D856E003B0FFD /* SelectedItemModel.swift in Sources */,
 				74C3B7C92B3CBA2800404C27 /* SelectItemRows.swift in Sources */,
+				74384D132B470A4600BEE81A /* sandbox.swift in Sources */,
 				74C3B7B72B3C873500404C27 /* ButtonStyle.swift in Sources */,
 				74C3B7862B3C7F2700404C27 /* erovidaApp.swift in Sources */,
 				74C3B7BB2B3C8CB600404C27 /* LoginTextField.swift in Sources */,

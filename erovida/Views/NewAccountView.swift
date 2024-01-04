@@ -54,8 +54,8 @@ struct NewAccountView: View {
                             if (!errorLastName && !errorName)
                             {
                                 let keyChain = AESAlgo.createPinString()
-                                savePinToKeychain(pin: keyChain, keyIdentifier: "pin")
-                                print(keyChain)
+                                saveStringToKeychain(str: keyChain, keyIdentifier: "pin")
+                                saveStringToKeychain(str: "no", keyIdentifier: "isKeySavedByUser")
                                 let key = AESAlgo.generateSymmetricKey(fromPin: keyChain)
                                 saveKeyToKeychain(key: key, keyIdentifier: "key")
                                 let key64 = AESAlgo.keyToString(key: key)
@@ -70,16 +70,12 @@ struct NewAccountView: View {
                                 
                                 let urlString = "http://192.168.1.37:5000/create_account?hashedKey=\(keyHashed)&nameCipher=\(stringFormat(text: sealedBoxFirstName.ciphertext.base64EncodedString()))&nameNonce=\(stringFormat(text: sealedBoxFirstName.nonce.withUnsafeBytes {Data(Array($0))}.base64EncodedString()))&nameTag=\(tagBase64)&lastNameCipher=\(stringFormat(text: sealedBoxLastName.ciphertext.base64EncodedString()))&lastNameNonce=\(stringFormat(text: sealedBoxLastName.nonce.withUnsafeBytes { Data(Array($0)) }.base64EncodedString()))&lastNameTag=\(tagBase64_Last)"
 
-                                performHTTPRequest(urlString: urlString) { result in
-                                    switch result {
-                                    case .success(let responseString):
-                                        print("Réponse de la requête :", responseString)
-                                    case .failure(let error):
-                                        print("Erreur de requête :", error.localizedDescription)
-                                    }
-                                }
-                                isKeySaved = true
+                                createAccount(hashedKey: keyHashed, nameCipher: stringFormat(text: sealedBoxFirstName.ciphertext.base64EncodedString()), nameNonce: stringFormat(text: sealedBoxFirstName.nonce.withUnsafeBytes {Data(Array($0))}.base64EncodedString()), nameTag: tagBase64, lastNameCipher: stringFormat(text: sealedBoxLastName.ciphertext.base64EncodedString()), lastNameNonce: stringFormat(text: sealedBoxLastName.nonce.withUnsafeBytes { Data(Array($0)) }.base64EncodedString()), lastNameTag: tagBase64_Last)
                             }
+                            
+                            isKeySaved = true
+                            
+                            
                         }
                         .buttonStyle(LoginButtonStyle())
                         .foregroundColor(.black)

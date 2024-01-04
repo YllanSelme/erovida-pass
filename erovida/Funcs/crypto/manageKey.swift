@@ -32,8 +32,8 @@ func saveKeyToKeychain(key: SymmetricKey, keyIdentifier: String) {
     }
 }
 
-func savePinToKeychain(pin: String, keyIdentifier: String) {
-    guard let pinData = pin.data(using: .utf8) else {
+func saveStringToKeychain(str: String, keyIdentifier: String) {
+    guard let strData = str.data(using: .utf8) else {
         print("Erreur lors de la conversion du code PIN en données.")
         return
     }
@@ -53,7 +53,7 @@ func savePinToKeychain(pin: String, keyIdentifier: String) {
     let addquery: [String: Any] = [
         kSecClass as String: kSecClassGenericPassword,
         kSecAttrAccount as String: keyIdentifier,
-        kSecValueData as String: pinData,
+        kSecValueData as String: strData,
         kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
     ]
 
@@ -84,7 +84,7 @@ func retrieveKeyFromKeychain(keyIdentifier: String) -> SymmetricKey? {
     return SymmetricKey(data: keyData)
 }
 
-func retrievePinFromKeychain(keyIdentifier: String) -> String? {
+func retrieveStringFromKeychain(keyIdentifier: String) -> String? {
     let query: [String: Any] = [
         kSecClass as String: kSecClassGenericPassword,
         kSecAttrAccount as String: keyIdentifier,
@@ -106,6 +106,14 @@ func retrievePinFromKeychain(keyIdentifier: String) -> String? {
     }
 
     return pin
+}
+
+func retrieveBoolFromKeychain(keyIdentifier: String) -> Bool? {
+    guard let stringValue = retrieveStringFromKeychain(keyIdentifier: keyIdentifier) else {
+        return nil
+    }
+
+    return stringValue.lowercased() == "yes"
 }
 
 
