@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CheckKey: View {
     @State private var pinValues: [String] = Array(repeating: "", count: 16)
-    @State private var alertText: String = "error"
+    @State private var alertText: String = "Votre clé est invalide"
     @State private var showingConfirmation: Bool = false
     @State private var showingAlert: Bool = false
     var body: some View {
@@ -17,13 +17,19 @@ struct CheckKey: View {
                     .multilineTextAlignment(.center)
                 PinFieldView(pinValues: $pinValues)
                 Button("Vérifier") {
-                    let key64 = pinValues.joined(separator: "")
-                    checkKey(hashedKey: key64) { success in
-                        if success {
-                            alertText = "Votre clé est valide"
-                            showingAlert = true
-                        } else {
-                            alertText = "Votre clé est invalide"
+                    let pinKey = pinValues.joined(separator: "")
+                    let key = AESAlgo.generateSymmetricKey(fromPin: pinKey)
+                    let key64 = AESAlgo.keyToString(key: key)
+                    let hashedKey = AESAlgo.sha256Hash(from: key64)
+                    if let memoKey = retrieveKeyFromKeychain(keyIdentifier: "key"){
+                        let memoKey64 = AESAlgo.keyToString(key: memoKey)
+                        let memoKeyHashed = AESAlgo.sha256Hash(from: memoKey64)
+                        checkKey(hashedKey: hashedKey) { success in
+                            if success {
+                                if memoKeyHashed == hashedKey {
+                                    alertText = "Votre clé est valide"
+                                }
+                            }
                             showingAlert = true
                         }
                     }
