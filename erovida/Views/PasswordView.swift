@@ -1,10 +1,18 @@
 import SwiftUI
 
+
+
 struct PasswordView: View {
-    @State private var selectedTab: Int = 1
+    struct TabIdentifier: Hashable, Identifiable {
+            let id: Int
+        }
+    
+    @Binding var isKeySaved: Bool
+    @State private var selectedTab: TabIdentifier?
     @State private var selectedItem: SelectItem?
     @State private var showingSheet: Bool = false
-    @State private var text: String = "Hello"
+    @State private var text: String = "Main Content"
+    @State private var pin: String = "fesfs"
     
     var body: some View {
         NavigationView {
@@ -18,55 +26,97 @@ struct PasswordView: View {
                         ToolbarItemGroup(placement: .bottomBar) {
                             Spacer()
                             Button {
-                                selectedTab = 1
+                                selectedTab = TabIdentifier(id: 1)
                                 text = "ejisf"
                             } label: {
                                 Label("", systemImage: "list.dash")
-                                    .foregroundColor(selectedTab == 1 ? .blue : .white)
+                                    .foregroundColor(selectedTab?.id == 1 ? .blue : .white)
                             }
                             Spacer()
                             Button {
-                                showingSheet = true
+                                selectedTab = TabIdentifier(id: 2)
+                                text = "kop"
                             } label: {
                                 Label("", systemImage: "plus")
                                     .foregroundColor(.white)
                             }
                             Spacer()
                             Button {
-                                selectedTab = 3
-                                text = "fesgesg"
+                                selectedTab = TabIdentifier(id: 3)
                             } label: {
                                 Label("", systemImage: "person.fill")
-                                    .foregroundColor(selectedTab == 3 ? .blue : .white)
+                                    .foregroundColor(selectedTab?.id == 3 ? .blue : .white)
                             }
                             Spacer()
                         }
                     }
-                    .sheet(isPresented: $showingSheet) {
-                        ZStack{
-                            Color(hex: 0x001D38)
-                                .edgesIgnoringSafeArea(.all)
-                            VStack {
-                                Text("Nouveau")
-                                    .font(.system(size:25, weight: .bold))
-                                    .foregroundColor(.white)
-                                    .padding()
-                                SelectItemView(selectedItem: $selectedItem, showingSheet: $showingSheet)
-                                    .presentationDetents([.medium])
-                                    .presentationDragIndicator(.hidden)
-                            }
+                    .sheet(item: $selectedTab) { tab in
+                        switch tab.id {
+                        case 1:
+                            Text("tab1")
+                        case 2:
+                            Text("tab2")
+                        case 3:
+                            Text("tab3")
+                        default:
+                            EmptyView()
                         }
                     }
+//                    .sheet(isPresented: $showingSheet) {
+//                        Text(pin)
+//                            .foregroundColor(.black)
+//
+//                        Button("Send pin") {
+//                            pin = retrievePinFromKeychain(keyIdentifier: "pin") ?? "oij"
+//
+//                        }
+//
+//                        Button("Se deconnecter") {
+//                            deleteKey(keyIdentifier: "key")
+//                            isKeySaved = false
+//                        }
+//                        .buttonStyle(LoginButtonStyle())
+//                        .foregroundColor(.black)
+//                        .frame(width: 340, height: 60)
+//                        .background(Color(hex: 0x4485C4))
+//                        .cornerRadius(50)
+////                        ZStack{
+////                            Color(hex: 0x001D38)
+////                                .edgesIgnoringSafeArea(.all)
+////                            VStack {
+////                                Text("Nouveau")
+////                                    .font(.system(size:25, weight: .bold))
+////                                    .foregroundColor(.white)
+////                                    .padding()
+////                                SelectItemView(selectedItem: $selectedItem, showingSheet: $showingSheet)
+////                                    .presentationDetents([.medium])
+////                                    .presentationDragIndicator(.hidden)
+////                            }
+////                        }
+//                    }
                     .sheet(item: $selectedItem) { selectedItem in
                         switch selectedItem.id {
                         case 1:
-                            Text("\(selectedItem.title)")
+                            NewIdentifantView()
                         case 2:
-                            Text("\(selectedItem.title)")
+                            NewCardView()
                         case 3:
-                            Text("\(selectedItem.title)")
+                            NewNoteView()
                         case 4:
-                            Text("\(selectedItem.title)")
+                            ZStack{
+                                Color(hex: 0x001D38)
+                                    .edgesIgnoringSafeArea(.all)
+                                VStack {
+                                    Text("Nouveau")
+                                        .font(.system(size:25, weight: .bold))
+                                        .foregroundColor(.white)
+                                        .padding()
+                                    NewPasswordView()
+                                        .presentationDetents([.height(350)])
+                                        .presentationDragIndicator(.hidden)
+                                }
+                                
+                            }
                         default:
                             EmptyView()
                         }
@@ -78,6 +128,6 @@ struct PasswordView: View {
 
 struct PasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordView()
+        PasswordView(isKeySaved: .constant(true))
     }
 }

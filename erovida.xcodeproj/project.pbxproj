@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74384CFD2B445B5100BEE81A /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 74384CFC2B445B5100BEE81A /* SwiftKeychainWrapper */; };
+		74384CFF2B445B6B00BEE81A /* manageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384CFE2B445B6B00BEE81A /* manageKey.swift */; };
+		74384D022B445BD500BEE81A /* AESAlgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D012B445BD500BEE81A /* AESAlgo.swift */; };
+		74384D072B44790C00BEE81A /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D062B44790C00BEE81A /* CreateAccount.swift */; };
+		74384D092B44819600BEE81A /* stringFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384D082B44819600BEE81A /* stringFormat.swift */; };
 		745AA1BD2B3D856E003B0FFD /* SelectedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1BC2B3D856E003B0FFD /* SelectedItemModel.swift */; };
 		745AA1BF2B3D85B0003B0FFD /* NewIdentifantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1BE2B3D85B0003B0FFD /* NewIdentifantView.swift */; };
 		745AA1C12B3DC814003B0FFD /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C02B3DC814003B0FFD /* RoundedCorner.swift */; };
@@ -14,6 +19,10 @@
 		745AA1C52B3DD64A003B0FFD /* IdentifiantsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C42B3DD64A003B0FFD /* IdentifiantsRowView.swift */; };
 		745AA1C72B3E1D40003B0FFD /* IdentifantFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C62B3E1D40003B0FFD /* IdentifantFieldStyle.swift */; };
 		745AA1C92B3E21C5003B0FFD /* FormatDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1C82B3E21C5003B0FFD /* FormatDate.swift */; };
+		745AA1CB2B402B40003B0FFD /* ChessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1CA2B402B40003B0FFD /* ChessView.swift */; };
+		745AA1CD2B402FB6003B0FFD /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1CC2B402FB6003B0FFD /* NewCardView.swift */; };
+		745AA1CF2B40317A003B0FFD /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745AA1CE2B40317A003B0FFD /* NewNoteView.swift */; };
+		74B35C4C2B407E8900AB0D7B /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B35C4B2B407E8900AB0D7B /* NewPasswordView.swift */; };
 		74C3B7862B3C7F2700404C27 /* erovidaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C3B7852B3C7F2700404C27 /* erovidaApp.swift */; };
 		74C3B7882B3C7F2700404C27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C3B7872B3C7F2700404C27 /* ContentView.swift */; };
 		74C3B78A2B3C7F2C00404C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C3B7892B3C7F2C00404C27 /* Assets.xcassets */; };
@@ -52,6 +61,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74384CFE2B445B6B00BEE81A /* manageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manageKey.swift; sourceTree = "<group>"; };
+		74384D012B445BD500BEE81A /* AESAlgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESAlgo.swift; sourceTree = "<group>"; };
+		74384D062B44790C00BEE81A /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
+		74384D082B44819600BEE81A /* stringFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringFormat.swift; sourceTree = "<group>"; };
 		745AA1BC2B3D856E003B0FFD /* SelectedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemModel.swift; sourceTree = "<group>"; };
 		745AA1BE2B3D85B0003B0FFD /* NewIdentifantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIdentifantView.swift; sourceTree = "<group>"; };
 		745AA1C02B3DC814003B0FFD /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -59,6 +72,10 @@
 		745AA1C42B3DD64A003B0FFD /* IdentifiantsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiantsRowView.swift; sourceTree = "<group>"; };
 		745AA1C62B3E1D40003B0FFD /* IdentifantFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifantFieldStyle.swift; sourceTree = "<group>"; };
 		745AA1C82B3E21C5003B0FFD /* FormatDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDate.swift; sourceTree = "<group>"; };
+		745AA1CA2B402B40003B0FFD /* ChessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessView.swift; sourceTree = "<group>"; };
+		745AA1CC2B402FB6003B0FFD /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
+		745AA1CE2B40317A003B0FFD /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
+		74B35C4B2B407E8900AB0D7B /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
 		74C3B7822B3C7F2700404C27 /* erovida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = erovida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C3B7852B3C7F2700404C27 /* erovidaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = erovidaApp.swift; sourceTree = "<group>"; };
 		74C3B7872B3C7F2700404C27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74384CFD2B445B5100BEE81A /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +125,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74384D002B445BB900BEE81A /* crypto */ = {
+			isa = PBXGroup;
+			children = (
+				74384CFE2B445B6B00BEE81A /* manageKey.swift */,
+				74384D012B445BD500BEE81A /* AESAlgo.swift */,
+			);
+			path = crypto;
+			sourceTree = "<group>";
+		};
+		74384D052B4478F800BEE81A /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				74384D062B44790C00BEE81A /* CreateAccount.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		745AA1BB2B3D855D003B0FFD /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +173,7 @@
 		74C3B7842B3C7F2700404C27 /* erovida */ = {
 			isa = PBXGroup;
 			children = (
+				74384D052B4478F800BEE81A /* Requests */,
 				745AA1BB2B3D855D003B0FFD /* Models */,
 				74C3B7C72B3CBA1800404C27 /* Rows */,
 				74C3B7BC2B3C91BF00404C27 /* Funcs */,
@@ -186,6 +222,10 @@
 				74C3B7C32B3CB41300404C27 /* PasswordView.swift */,
 				74C3B7C52B3CB8E700404C27 /* SelectItemView.swift */,
 				745AA1BE2B3D85B0003B0FFD /* NewIdentifantView.swift */,
+				745AA1CA2B402B40003B0FFD /* ChessView.swift */,
+				745AA1CC2B402FB6003B0FFD /* NewCardView.swift */,
+				745AA1CE2B40317A003B0FFD /* NewNoteView.swift */,
+				74B35C4B2B407E8900AB0D7B /* NewPasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,8 +254,10 @@
 		74C3B7BC2B3C91BF00404C27 /* Funcs */ = {
 			isa = PBXGroup;
 			children = (
+				74384D002B445BB900BEE81A /* crypto */,
 				74C3B7BD2B3C91CE00404C27 /* UpdateError.swift */,
 				745AA1C82B3E21C5003B0FFD /* FormatDate.swift */,
+				74384D082B44819600BEE81A /* stringFormat.swift */,
 			);
 			path = Funcs;
 			sourceTree = "<group>";
@@ -245,6 +287,9 @@
 			dependencies = (
 			);
 			name = erovida;
+			packageProductDependencies = (
+				74384CFC2B445B5100BEE81A /* SwiftKeychainWrapper */,
+			);
 			productName = erovida;
 			productReference = 74C3B7822B3C7F2700404C27 /* erovida.app */;
 			productType = "com.apple.product-type.application";
@@ -317,6 +362,10 @@
 				Base,
 			);
 			mainGroup = 74C3B7792B3C7F2700404C27;
+			packageReferences = (
+				747EB3162B4183DB00563F5B /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				74384CFB2B445B5100BEE81A /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 74C3B7832B3C7F2700404C27 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -359,17 +408,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B35C4C2B407E8900AB0D7B /* NewPasswordView.swift in Sources */,
 				745AA1C32B3DC86D003B0FFD /* RoundedCornerStyle.swift in Sources */,
 				74C3B7C02B3C933F00404C27 /* SignInView.swift in Sources */,
 				745AA1C72B3E1D40003B0FFD /* IdentifantFieldStyle.swift in Sources */,
+				745AA1CD2B402FB6003B0FFD /* NewCardView.swift in Sources */,
 				745AA1BF2B3D85B0003B0FFD /* NewIdentifantView.swift in Sources */,
 				74C3B7C62B3CB8E700404C27 /* SelectItemView.swift in Sources */,
 				74C3B7C42B3CB41300404C27 /* PasswordView.swift in Sources */,
 				74C3B7B12B3C7F6A00404C27 /* LoginInView.swift in Sources */,
+				74384D092B44819600BEE81A /* stringFormat.swift in Sources */,
 				74C3B7BE2B3C91CE00404C27 /* UpdateError.swift in Sources */,
+				745AA1CB2B402B40003B0FFD /* ChessView.swift in Sources */,
 				74C3B7B92B3C8ADB00404C27 /* NewAccountView.swift in Sources */,
 				74C3B7C22B3C961F00404C27 /* CodeStyle.swift in Sources */,
+				74384CFF2B445B6B00BEE81A /* manageKey.swift in Sources */,
 				745AA1C92B3E21C5003B0FFD /* FormatDate.swift in Sources */,
+				745AA1CF2B40317A003B0FFD /* NewNoteView.swift in Sources */,
+				74384D022B445BD500BEE81A /* AESAlgo.swift in Sources */,
 				745AA1C12B3DC814003B0FFD /* RoundedCorner.swift in Sources */,
 				74C3B7B42B3C84B400404C27 /* Color.swift in Sources */,
 				74C3B7882B3C7F2700404C27 /* ContentView.swift in Sources */,
@@ -378,6 +434,7 @@
 				74C3B7B72B3C873500404C27 /* ButtonStyle.swift in Sources */,
 				74C3B7862B3C7F2700404C27 /* erovidaApp.swift in Sources */,
 				74C3B7BB2B3C8CB600404C27 /* LoginTextField.swift in Sources */,
+				74384D072B44790C00BEE81A /* CreateAccount.swift in Sources */,
 				745AA1C52B3DD64A003B0FFD /* IdentifiantsRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,6 +754,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		74384CFB2B445B5100BEE81A /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		747EB3162B4183DB00563F5B /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		74384CFC2B445B5100BEE81A /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 74384CFB2B445B5100BEE81A /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 74C3B77A2B3C7F2700404C27 /* Project object */;
 }

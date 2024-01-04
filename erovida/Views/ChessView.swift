@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SelectItemView: View {
+struct SelectChessView: View {
     @Binding var selectedItem: SelectItem?
     @Binding var showingSheet: Bool
     
@@ -23,5 +23,3 @@ struct SelectItemView: View {
         .listStyle(.plain)
     }
 }
-
-

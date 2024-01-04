@@ -3,10 +3,19 @@ import Combine
 
 struct SignInView: View {
     enum FocusPin {
-        case  pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix, pinSeven, pinEight
+        case  pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix, pinSeven, pinEight, pinOneBis, pinTwoBis, pinThreeBis, pinFourBis, pinFiveBis, pinSixBis, pinSevenBis, pinEightBis
     }
     
     @FocusState private var pinFocusState : FocusPin?
+    
+    @Binding var isKeySaved: Bool
+
+    
+    @State private var isSignInButtonDisabled: Bool = true
+    
+    @State private var pin: String = ""
+    @State private var key: String = ""
+
     
     @State private var isEditingOne: Bool = false
     @State private var isEditingTwo: Bool = false
@@ -16,8 +25,14 @@ struct SignInView: View {
     @State private var isEditingSix: Bool = false
     @State private var isEditingSeven: Bool = false
     @State private var isEditingEight: Bool = false
-    
-    @State private var isSignInButtonDisabled: Bool = true
+    @State private var isEditingOneBis: Bool = false
+    @State private var isEditingTwoBis: Bool = false
+    @State private var isEditingThreeBis: Bool = false
+    @State private var isEditingFourBis: Bool = false
+    @State private var isEditingFiveBis: Bool = false
+    @State private var isEditingSixBis: Bool = false
+    @State private var isEditingSevenBis: Bool = false
+    @State private var isEditingEightBis: Bool = false
     
     @State private var pinOne: String = ""
     @State private var pinTwo: String = ""
@@ -27,6 +42,14 @@ struct SignInView: View {
     @State private var pinSix: String = ""
     @State private var pinSeven: String = ""
     @State private var pinEight: String = ""
+    @State private var pinOneBis: String = ""
+    @State private var pinTwoBis: String = ""
+    @State private var pinThreeBis: String = ""
+    @State private var pinFourBis: String = ""
+    @State private var pinFiveBis: String = ""
+    @State private var pinSixBis: String = ""
+    @State private var pinSevenBis: String = ""
+    @State private var pinEightBis: String = ""
     
     var body: some View {
         ZStack {
@@ -154,8 +177,127 @@ struct SignInView: View {
                         .modifier(OtpModifer(pin: $pinEight, isEditing: isEditingEight))
                         .focused($pinFocusState, equals: .pinEight)
                         .onChange(of: pinEight) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinOneBis
+                            }
+                            else if newValue.count == 0 {
+                                pinFocusState = .pinSix
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                    HStack(spacing: 10) {
+                        TextField("", text: $pinOneBis, onEditingChanged: { editing in
+                            isEditingOneBis = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinOneBis, isEditing: isEditingOneBis))
+                        .focused($pinFocusState, equals: .pinOneBis)
+                        .onChange(of: pinOneBis) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinTwoBis
+                            }
+                        }
+                        
+                        TextField("", text: $pinTwoBis, onEditingChanged: { editing in
+                            isEditingTwo = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinTwoBis, isEditing: isEditingTwoBis))
+                        .focused($pinFocusState, equals: .pinTwoBis)
+                        .onChange(of: pinTwoBis) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinThreeBis
+                            }
+                            else if newValue.count == 0 {
+                                pinFocusState = .pinOneBis
+                            }
+                        }
+                        
+                        
+                        TextField("", text: $pinThreeBis, onEditingChanged: { editing in
+                            isEditingThreeBis = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinThreeBis, isEditing: isEditingThreeBis))
+                        .focused($pinFocusState, equals: .pinThreeBis)
+                        .onChange(of: pinThreeBis) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinFourBis
+                            }
+                            else if newValue.count == 0 {
+                                pinFocusState = .pinTwoBis
+                            }
+                        }
+                        
+                        
+                        TextField("", text: $pinFourBis, onEditingChanged: { editing in
+                            isEditingFourBis = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinFourBis, isEditing: isEditingFourBis))
+                        .focused($pinFocusState, equals: .pinFourBis)
+                        .onChange(of: pinFourBis) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinFiveBis
+                            }
+                            else if newValue.count == 0 {
+                                pinFocusState = .pinThreeBis
+                            }
+                        }
+                        
+                        
+                        
+                        TextField("", text: $pinFiveBis, onEditingChanged: { editing in
+                            isEditingFiveBis = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinFiveBis, isEditing: isEditingFiveBis))
+                        .focused($pinFocusState, equals: .pinFiveBis)
+                        .onChange(of: pinFiveBis) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinSixBis
+                            }
+                            else if newValue.count == 0 {
+                                pinFocusState = .pinFourBis
+                            }
+                        }
+                        
+                        
+                        TextField("", text: $pinSixBis, onEditingChanged: { editing in
+                            isEditingSixBis = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinOneBis, isEditing: isEditingSixBis))
+                        .focused($pinFocusState, equals: .pinSixBis)
+                        .onChange(of: pinSixBis) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinSevenBis
+                            }
+                            else if newValue.count == 0 {
+                                pinFocusState = .pinFiveBis
+                            }
+                        }
+                        
+                        
+                        TextField("", text: $pinSevenBis, onEditingChanged: { editing in
+                            isEditingSevenBis = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinSevenBis, isEditing: isEditingSevenBis))
+                        .focused($pinFocusState, equals: .pinSevenBis)
+                        .onChange(of: pinSevenBis) { newValue in
+                            if newValue.count >= 1 {
+                                pinFocusState = .pinEightBis
+                            }
+                            else if newValue.count == 0 {
+                                pinFocusState = .pinSixBis
+                            }
+                        }
+                        
+                        TextField("", text: $pinEightBis, onEditingChanged: { editing in
+                            isEditingEightBis = editing
+                        })
+                        .modifier(OtpModifer(pin: $pinEightBis, isEditing: isEditingEightBis))
+                        .focused($pinFocusState, equals: .pinEightBis)
+                        .onChange(of: pinEightBis) { newValue in
                             if newValue.count == 0 {
-                                pinFocusState = .pinSeven
+                                pinFocusState = .pinSevenBis
                             }
                         }
                         
@@ -170,15 +312,28 @@ struct SignInView: View {
                         pinSix = ""
                         pinSeven = ""
                         pinEight = ""
+                        pinOneBis = ""
+                        pinTwoBis = ""
+                        pinThreeBis = ""
+                        pinFourBis = ""
+                        pinFiveBis = ""
+                        pinSixBis = ""
+                        pinSevenBis = ""
+                        pinEightBis = ""
                     } label: {
                         Text("Recommencer")
                             .font(.system(size: 17))
                     }
                 }
                 .padding()
+                Text(key)
                 
                 Button("Se connecter") {
-                    print("jioges")
+                    pin = "\(pinOne)\(pinTwo)\(pinThree)\(pinFour)\(pinFive)\(pinSix)\(pinSeven)\(pinEight)\(pinOneBis)\(pinTwoBis)\(pinThreeBis)\(pinFourBis)\(pinFiveBis)\(pinSixBis)\(pinSevenBis)\(pinEightBis)"
+                    let key = AESAlgo.generateSymmetricKey(fromPin: pin)
+                    saveKeyToKeychain(key: key, keyIdentifier: "key")
+                    isKeySaved = true
+                    
                 }
                 .disabled(checkFields())
                 .buttonStyle(LoginButtonStyle())
@@ -194,11 +349,4 @@ struct SignInView: View {
         return pinOne.isEmpty || pinTwo.isEmpty || pinThree.isEmpty || pinFour.isEmpty || pinFive.isEmpty || pinSix.isEmpty || pinSeven.isEmpty || pinEight.isEmpty
     }
     
-}
-
-
-struct SignInView_Preview: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
 }

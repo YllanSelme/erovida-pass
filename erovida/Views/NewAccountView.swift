@@ -1,19 +1,16 @@
-//
-//  NewAccountView.swift
-//  erovida
-//
-//  Created by nosh#1234 on 27/12/2023.
-//
-
 import SwiftUI
+import CryptoKit
+import Foundation
+import Security
 
 struct NewAccountView: View {
-    @State var prenom = ""
-    @State var nom = ""
-    @State private var isEditingPrenom = false
-    @State private var isEditingNom = false
-    @State private var errorPrenom = false
-    @State private var errorNom = false
+    @Binding var isKeySaved: Bool
+    @State var name = ""
+    @State var lastName = ""
+    @State private var isEditingName = false
+    @State private var isEditingLastName = false
+    @State private var errorName = false
+    @State private var errorLastName = false
 
     var body: some View {
         ZStack {
@@ -28,35 +25,60 @@ struct NewAccountView: View {
                 VStack{
                     VStack(alignment: .leading){
                         Text("Prénom")
-                            .foregroundColor(errorPrenom ? Color.red : Color.white)
-                        TextField("", text: $prenom, onEditingChanged: { editing in isEditingPrenom = editing
+                            .foregroundColor(errorName ? Color.red : Color.white)
+                        TextField("", text: $name, onEditingChanged: { editing in isEditingName = editing
                         })
-                        .modifier(LoginTextField(error: errorPrenom, isEditing: isEditingPrenom))
+                        .modifier(LoginTextField(error: errorName, isEditing: isEditingName))
                         
                         Text("Merci de renseigner votre prénom")
-                            .foregroundColor(errorPrenom ? Color.red : Color(hex: 0x001D38))
+                            .foregroundColor(errorName ? Color.red : Color(hex: 0x001D38))
                     }
                     .padding()
                     
                     VStack(alignment: .leading){
                         Text("Nom")
-                            .foregroundColor(errorNom ? Color.red : Color.white)
-                        TextField("", text: $nom, onEditingChanged: { editing in isEditingNom = editing
+                            .foregroundColor(errorLastName ? Color.red : Color.white)
+                        TextField("", text: $lastName, onEditingChanged: { editing in isEditingLastName = editing
                         })
-                        .modifier(LoginTextField(error: errorNom, isEditing: isEditingNom))
+                        .modifier(LoginTextField(error: errorLastName, isEditing: isEditingLastName))
                         Text("Merci de renseigner votre nom")
-                            .foregroundColor(errorNom ? Color.red : Color(hex: 0x001D38))
+                            .foregroundColor(errorLastName ? Color.red : Color(hex: 0x001D38))
                     }
                     .padding()
                     
                     VStack{
                         Button("Créer un nouveau compte") {
-                            updateErrorState(text: prenom, error: &errorPrenom)
-                            updateErrorState(text: nom, error: &errorNom)
+                            updateErrorState(text: name, error: &errorName)
+                            updateErrorState(text: lastName, error: &errorLastName)
                             
-                            if (!errorNom && !errorPrenom)
+                            if (!errorLastName && !errorName)
                             {
-                                print("hello")
+                                let keyChain = AESAlgo.createPinString()
+                                savePinToKeychain(pin: keyChain, keyIdentifier: "pin")
+                                print(keyChain)
+                                let key = AESAlgo.generateSymmetricKey(fromPin: keyChain)
+                                saveKeyToKeychain(key: key, keyIdentifier: "key")
+                                let key64 = AESAlgo.keyToString(key: key)
+                                print(key64)
+                                let sealedBoxFirstName = AESAlgo.encryption(message: name, key: key)
+                                let keyHashed = AESAlgo.sha256Hash(from: key64)
+                                let sealedBoxLastName = AESAlgo.encryption(message: lastName, key: key)
+                                
+                                let tagBase64 = stringFormat(text: sealedBoxFirstName.tag.base64EncodedString())
+                                
+                                let tagBase64_Last = stringFormat(text: sealedBoxLastName.tag.base64EncodedString())
+                                
+                                let urlString = "http://192.168.1.37:5000/create_account?hashedKey=\(keyHashed)&nameCipher=\(stringFormat(text: sealedBoxFirstName.ciphertext.base64EncodedString()))&nameNonce=\(stringFormat(text: sealedBoxFirstName.nonce.withUnsafeBytes {Data(Array($0))}.base64EncodedString()))&nameTag=\(tagBase64)&lastNameCipher=\(stringFormat(text: sealedBoxLastName.ciphertext.base64EncodedString()))&lastNameNonce=\(stringFormat(text: sealedBoxLastName.nonce.withUnsafeBytes { Data(Array($0)) }.base64EncodedString()))&lastNameTag=\(tagBase64_Last)"
+
+                                performHTTPRequest(urlString: urlString) { result in
+                                    switch result {
+                                    case .success(let responseString):
+                                        print("Réponse de la requête :", responseString)
+                                    case .failure(let error):
+                                        print("Erreur de requête :", error.localizedDescription)
+                                    }
+                                }
+                                isKeySaved = true
                             }
                         }
                         .buttonStyle(LoginButtonStyle())
@@ -74,7 +96,7 @@ struct NewAccountView: View {
 
 struct NewAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAccountView()
+        NewAccountView(isKeySaved: .constant(false))
     }
 }
 

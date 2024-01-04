@@ -1,13 +1,13 @@
 //
-//  NewIdentifantView.swift
+//  NewCardView.swift
 //  erovida
 //
-//  Created by nosh#1234 on 28/12/2023.
+//  Created by nosh#1234 on 30/12/2023.
 //
 
 import SwiftUI
 
-struct NewIdentifantView: View {
+struct NewCardView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var selectChest : Bool = false
     @State private var selectedItem: SelectItem?
@@ -34,9 +34,9 @@ struct NewIdentifantView: View {
                     } label: {
                         Image(systemName: "xmark")
                             .font(.system(size:25))
-                            .foregroundColor(Color(hex:0x806491))
+                            .foregroundColor(Color(hex: 0x298F64))
                             .padding(10)
-                            .background(Color(hex: 0x7D41A2))
+                            .background(Color(hex: 0x297354))
                             .cornerRadius(50)
                     }
                     Spacer()
@@ -45,17 +45,17 @@ struct NewIdentifantView: View {
                     } label: {
                         Text("Créer")
                             .font(.system(size:25))
-                            .foregroundColor(Color(hex:0x806491))
+                            .foregroundColor(Color(hex: 0x298F64))
                             .padding(10)
                             .padding(.horizontal, 15)
-                            .background(Color(hex: 0x7D41A2))
+                            .background(Color(hex: 0x297354))
                             .cornerRadius(50)
                     }
                 }
                 .padding(15)
                 .padding(.horizontal, 25)
                 
-            ScrollView{
+                ScrollView{
                     VStack (spacing: 2){
                         ZStack {
                             Rectangle()
@@ -64,10 +64,10 @@ struct NewIdentifantView: View {
                                 .roundedCorner(20, corners: [.topLeft, .topRight])
                             HStack{
                                 Image(systemName: "house")
-                                    .foregroundColor(Color(hex:0x806491))
+                                    .foregroundColor(Color(hex: 0x298F64))
                                     .font(.system(size:25))
                                     .frame(width: 50, height: 50)
-                                    .background(Color(hex: 0x7D41A2))
+                                    .background(Color(hex: 0x297354))
                                     .cornerRadius(50)
                                     .padding(10)
                                 
@@ -120,14 +120,23 @@ struct NewIdentifantView: View {
                                 .frame(width: 350, height: 100)
                                 .background(Color(hex: 0x090D11))
                                 .roundedCorner(20, corners: [.topLeft, .topRight])
-                            IdentifiantsRowView(title: $name, imageName: "person", titleText: "Nom d'utilisateur ou adresse mail", field: "Ajoutez votre nom d'utilisateur ou adresse mail")
+                            IdentifiantsRowView(title: $name, imageName: "person", titleText: "Nom du titulaire de la carte", field: "Nom complet")
                         }
+                        
                         
                         ZStack(alignment: .leading){
                             Rectangle()
                                 .frame(width: 350, height: 100)
                                 .background(Color(hex: 0x090D11))
-                            IdentifiantsRowView(title: $password, imageName: "key", titleText: "Un mot de passe", field: "Ajoutez votre mot de passe")
+                            IdentifiantsRowView(title: $password, imageName: "creditcard", titleText: "Numéro de la carte", field: "1234 1234 1234 1234")
+                        }
+                        
+                        
+                        ZStack(alignment: .leading){
+                            Rectangle()
+                                .frame(width: 350, height: 100)
+                                .background(Color(hex: 0x090D11))
+                            IdentifiantsRowView(title: $key, imageName: "calendar", titleText: "Expire le", field: "MM/AA")
                         }
                         
                         ZStack(alignment: .leading){
@@ -135,18 +144,11 @@ struct NewIdentifantView: View {
                                 .frame(width: 350, height: 100)
                                 .background(Color(hex: 0x090D11))
                                 .roundedCorner(20, corners: [.bottomLeft, .bottomRight])
-                            IdentifiantsRowView(title: $key, imageName: "lock", titleText: "Clé secrète A2F (optionel)", field: "Ajoutez la clé secreète A2F.")
+                            IdentifiantsRowView(title: $key, imageName: "checkmark.shield", titleText: "Numéro de vérification", field: "123")
                         }
+                        
                     }
                     .padding(0)
-                    
-                    ZStack(alignment: .leading){
-                        Rectangle()
-                            .frame(width: 350, height: 100)
-                            .background(Color(hex: 0x090D11))
-                            .roundedCorner(20, corners: [.bottomLeft, .bottomRight, .topLeft, .topRight])
-                        IdentifiantsRowView(title: $website, imageName: "globe", titleText: "Site", field: "https://")
-                    }
                     
                     ZStack(alignment: .leading){
                         Rectangle()
@@ -198,20 +200,8 @@ struct NewIdentifantView: View {
     }
 }
 
-struct TextFieldModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(10)
-            .foregroundColor(.white)
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-            )
-    }
-}
-
-
-struct NewIdentifantView_Previews: PreviewProvider {
+struct NewCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NewIdentifantView()
+        NewCardView()
     }
 }

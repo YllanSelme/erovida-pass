@@ -41,7 +41,6 @@ struct IdentifiantTitleView: View {
                 .font(.system(size: 40, weight: .bold))
                 .padding(8)
         }
-        .background(Color.black)
         .cornerRadius(8)
     }
 }

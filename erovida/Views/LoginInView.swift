@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LoginInView: View {
+    @Binding var isKeySaved: Bool
     @State private var newAccountSheet = false
     @State private var loginSheet = false
     
@@ -28,7 +29,7 @@ struct LoginInView: View {
                     .background(Color(hex: 0x4485C4))
                     .cornerRadius(50)
                     .sheet(isPresented: $newAccountSheet) {
-                        NewAccountView()
+                        NewAccountView(isKeySaved: $isKeySaved)
                     }
                     
                     Button("Se connecter") {
@@ -37,7 +38,7 @@ struct LoginInView: View {
                     .buttonStyle(LoginButtonStyle())
                     .foregroundColor(Color(hex: 0x4485C4))
                     .sheet(isPresented: $loginSheet) {
-                        SignInView()
+                        SignInView(isKeySaved: $isKeySaved)
                     }
                 }
                 .padding()
@@ -57,7 +58,7 @@ struct LoginInView: View {
 
 struct LoginInView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginInView()
+        LoginInView(isKeySaved: .constant(false))
     }
 }
 

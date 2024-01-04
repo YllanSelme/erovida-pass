@@ -1,45 +1,62 @@
 import SwiftUI
-
-//struct CustomTextField: View {
-//    @Binding var text: String
-//    var placeholder: String
-//    var placeholderColor: Color
-//
-//    var body: some View {
-//        ZStack(alignment: .leading) {
-//            if text.isEmpty {
-//                Text(placeholder)
-//                    .foregroundColor(placeholderColor)
-//                    .padding(.horizontal, 8)
-//            }
-//            TextField("", text: $text)
-//                .foregroundColor(.white) // Couleur du texte lorsque le champ est rempli
-//                .padding(8)
-//        }
-//        .background(Color.black)
-//        .cornerRadius(8)
-//        .padding(16)
-//    }
-//}
-//
-//struct ContentView: View {
-//    @State private var searchText = ""
-//
-//    var body: some View {
-//        CustomTextField(text: $searchText, placeholder: "Placeholder", placeholderColor: .green)
-//    }
-//}
-
+import Combine
 
 struct ContentView: View {
-    @State private var selectedDate = Date()
-
+    @State private var selectedTab: Int = 1
+    @State private var selectedItem: SelectItem?
+    @State private var showingSheet: Bool = false
+    @State private var text: String = "Hello"
+    @State private var pin: String = "fesfs"
+    @State private var isKeySaved = false
+    
     var body: some View {
-        HStack {
-            Text("hjiesgkse")
-            Image(systemName: "person")
+        NavigationView {
+            ZStack {
+                Color(.blue)
+                    .edgesIgnoringSafeArea(.all)
+                Text(text)
+                    .foregroundColor(.white)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .bottomBar) {
+                            Spacer()
+                            Button {
+                                selectedTab = 1
+                            } label: {
+                                Label("", systemImage: "list.dash")
+                            }
+                            Spacer()
+                            Button {
+                                selectedTab = 2
+                            } label: {
+                                Label("", systemImage: "plus")
+                            }
+                            Spacer()
+                            Button {
+                                selectedTab = 2
+                            } label: {
+                                Label("", systemImage: "person.fill")
+                            }
+                            Spacer()
+                        }
+                    }
+            }
         }
-        .background(.green)
+//        NavigationView {
+//            Group {
+//                if let _ = retrieveKeyFromKeychain(keyIdentifier: "key") {
+//                    PasswordView(isKeySaved: $isKeySaved)
+//                } else {
+//                    LoginInView(isKeySaved: $isKeySaved)
+//                        .onReceive(Just(isKeySaved)) { newValue in
+//                            if newValue {
+//                                NavigationLink("", destination: PasswordView(isKeySaved: $isKeySaved), isActive: $isKeySaved)
+//                                    .isDetailLink(false)
+//                            }
+//                        }
+//                }
+//            }
+//            .navigationBarHidden(true)
+//        }
     }
 }
 
